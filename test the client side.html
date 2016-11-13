@@ -172,9 +172,10 @@ form {
 	
       $scope.reset = function() {
         $scope.user = angular.copy($scope.master);
+       $scope.reset();
       };
 
-      $scope.reset();
+     
     }]);
 	
 	
