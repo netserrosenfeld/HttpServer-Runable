@@ -1,0 +1,138 @@
+<div class="container">
+    <div >
+        <button class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            {{text[42]}}
+        </button>
+    </div>
+    <!-- Modal -->
+    <div style="direction:rtl;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="entypo-tools"></span>{{text[46]}}</h4>
+                  
+                </div>
+                <div class="modal-body">
+                    <h2>{{text[45]}}</h2>
+     
+                    <div class="modal-body">
+                        <div class="row solsoShowForm">
+                            <form style="direction:rtl;"  accept-charset="UTF-8" role="form" class="solsoForm" data-alert="">
+                               
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="name">
+                                            {{text[39]}}
+                                        </label>
+                                        <input type="text" ng-model="code" name="code" class="form-control required" autocomplete="off" value="">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="quantity">{{text[41]}}</label>
+                                        <input type="text" ng-model="name" name="name" class="form-control" autocomplete="off" value="">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="code">{{text[40]}}</label>
+                                        <input type="text" ng-model="quantity" name="quantity" class="form-control" autocomplete="off" value="">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="price">{{text[43]}}</label>
+                                        <input type="text" ng-model="price" name="price" class="form-control" autocomplete="off" value="">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description">{{text[44]}}</label>
+                                        <textarea name="description" ng-model="description" class="form-control" rows="7" autocomplete="off"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <button data-dismiss="modal" type="button" class="btn btn-success solsoSave" data-message-title="Create notification" ng-click="submitNewProduct()" data-message-error="Validation error messages" data-message-success="Data was saved">
+                                        <i class="fa fa-save"></i> Save
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-on-grey" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-on-grey" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <td>
+                    <a ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                        {{text[35]}}
+                        <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        {{text[41]}}
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'quantity'; sortReverse = !sortReverse">
+                        {{text[40]}}
+                        <span ng-show="sortType == 'quantity' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'quantity' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'type'; sortReverse = !sortReverse">
+                        {{text[39]}}
+                        <span ng-show="sortType == 'type' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'type' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                        {{text[43]}}
+                        <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:id">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>
+<img ng-click="decreaseItemCount(item)" src="../../img/iconset-addictive-flavour-set/png/Keys/key_minus.png" />{{ item.quantity }}
+
+                    <img ng-click="increaseItemCount(item)" src="../../img/iconset-addictive-flavour-set/png/Keys/key_plus.png" />
+    </td>
+            
+                <td>{{ item.type }}</td>
+                <td>{{ item.price }}</td>
+
+
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+</div>

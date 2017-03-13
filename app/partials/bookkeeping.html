@@ -1,0 +1,104 @@
+<div class="container" >
+
+    <div class="alert alert-info">
+        <p>Sort Type: {{ sortType }}</p>
+        <p>Sort Reverse: {{ sortReverse }}</p>
+        <p>Search Query: {{ searchFish }}</p>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="search" ng-model="searchFish">
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <td>
+                    <a  ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                        {{text[35]}}
+                        <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'active'; sortReverse = !sortReverse">
+                        {{text[53]}}
+                        <span ng-show="sortType == 'active' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'active' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a  ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        {{text[22]}}
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a  ng-click="sortType = 'tz'; sortReverse = !sortReverse">
+                        {{text[34]}}
+                        <span ng-show="sortType == 'tz' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'tz' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+               
+                <td>
+                    <a ng-click="sortType = 'date'; sortReverse = !sortReverse">
+                        {{text[36]}}
+
+
+                        <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a  ng-click="sortType = 'checkNumber'; sortReverse = !sortReverse">
+                        {{text[37]}}
+                        <span ng-show="sortType == 'checkNumber' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'checkNumber' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'address'; sortReverse = !sortReverse">
+                        {{text[38]}}
+                        <span ng-show="sortType == 'address' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'address' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'type'; sortReverse = !sortReverse">
+                        {{text[39]}}
+                        <span ng-show="sortType == 'type' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'type' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in sushi | orderBy:sortType:sortReverse | filter:id">
+                <td>{{ item.id }}</td>
+                <td><input type="checkbox" ng-model="item.active"></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.tz }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.checkNumber }}</td>
+                <td>{{ item.address }}</td>
+                <td>{{ item.type }}</td>
+               
+               
+            </tr>
+        </tbody>
+
+    </table>
+
+   
+
+   
+</div>
